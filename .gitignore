@@ -1,0 +1,17 @@
+# aria2 binary is fetched by install.bat, never committed
+aria2c.exe
+AUTHORS
+COPYING
+
+# runtime artifacts
+downloads/
+session.txt
+*.aria2
+*.zip
+aria2-*-win-*-build*/
+
+# editor / OS noise
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
