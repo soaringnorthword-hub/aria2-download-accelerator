@@ -1,0 +1,11 @@
+# Batch files must stay CRLF on every platform
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Everything else stays LF so aria2 parses the config cleanly
+*.conf text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+LICENSE text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
