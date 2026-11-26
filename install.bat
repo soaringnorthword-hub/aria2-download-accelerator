@@ -17,8 +17,16 @@ if errorlevel 1 goto fail
 
 echo.
 echo   Extracting ...
-tar -xf "%ZIP%"
+set "BSTAR=%SystemRoot%\System32\tar.exe"
+if exist "%BSTAR%" goto usebsdtar
+echo   System tar not found, falling back to PowerShell Expand-Archive ...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '%ZIP%' -DestinationPath '.' -Force"
 if errorlevel 1 goto fail
+goto extracted
+:usebsdtar
+"%BSTAR%" -xf "%ZIP%"
+if errorlevel 1 goto fail
+:extracted
 
 if exist "%PKG%\aria2c.exe" move /y "%PKG%\aria2c.exe" "aria2c.exe" >nul
 if exist "%PKG%\AUTHORS" copy /y "%PKG%\AUTHORS" "AUTHORS" >nul
